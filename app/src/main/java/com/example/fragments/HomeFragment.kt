@@ -24,6 +24,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
 
+
         sozDao = SozDatabase.getInstance(requireContext()).sozDao()
 
         binding.apply {
@@ -46,7 +47,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
         }
 
-        binding.llToolbar.addTextChangedListener {
+
+
+        binding.llToolbar1.addTextChangedListener {
             it?.let {
                 val searchSoz = it.toString()
                 val newList = sozDao.searchSoz("%$searchSoz%")

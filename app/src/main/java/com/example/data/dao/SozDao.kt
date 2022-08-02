@@ -1,9 +1,6 @@
 package com.example.data.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.example.data.model.Soz
 
 @Dao
@@ -17,9 +14,12 @@ interface SozDao {
     @Query("SELECT * FROM mysoz WHERE id = :id")
     fun getSozID(id: Int): Soz
 
-    @Update
-    fun update(soz: Soz)
+    @Query("SELECT * FROM mysoz WHERE is_favorite = 1")
+    fun getAllFavorites(): MutableList<Soz>
 
-    @Insert
-    fun insert(soz: Soz)
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    fun updateSoz(soz: Soz)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertSoz(soz: Soz)
 }

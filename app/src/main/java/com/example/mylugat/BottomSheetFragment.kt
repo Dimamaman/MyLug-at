@@ -1,6 +1,8 @@
 package com.example.mylugat
 
-import android.content.DialogInterface
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,12 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.airbnb.lottie.LottieAnimationView
+import android.widget.Toast
 import com.example.data.dao.SozDao
 import com.example.data.model.Soz
 import com.example.database.SozDatabase
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import java.net.IDN
 
 class BottomSheetFragment : BottomSheetDialogFragment() {
     override fun getTheme(): Int {
@@ -27,6 +28,7 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
     private lateinit var dao: SozDao
     private lateinit var soz: Soz
     private lateinit var lotie: ImageView
+    private lateinit var copy: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,6 +45,7 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
         val title: TextView = view.findViewById(R.id.title_bottom_sheet)
         val description: TextView = view.findViewById(R.id.description_bottom_sheet)
         lotie = view.findViewById(R.id.like_lottie)
+        copy = view.findViewById(R.id.copy)
         dao = SozDatabase.getInstance(requireContext()).sozDao()
 
         val data = arguments
@@ -50,23 +53,40 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
         val currentSozIsFavorite = data.getInt("key")
         Log.d("TT", currentSozIsFavorite.toString())
 
+
+
         soz = dao.getSozID(currentSozID)
         title.text = soz.name
         description.text = soz.description
 
-        Log.d("TT", soz.toString())
-
         setFavoriteIcon()
 
         lotie.setOnClickListener {
+            if (soz.is_favorite == 0) {
+                Toast.makeText(context,"Tanlanganlarga qo'shildi",Toast.LENGTH_SHORT).show()
+            }else {
+                Toast.makeText(context,"Tanlanganlardan o'shirildi",Toast.LENGTH_SHORT).show()
+            }
             setFavorite()
+        }
+
+        copy.setOnClickListener {
+            val clipboard = requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText(soz.name,"${soz.name}\n ${soz.description}")
+            clipboard.setPrimaryClip(clip)
+            Toast.makeText(requireContext(),"Copyed",Toast.LENGTH_SHORT).show()
         }
     }
 
 
     private fun setFavorite() {
         soz.is_favorite = 1 - soz.is_favorite!!
-        dao.update(soz)
+        dao.updateSoz(soz)
+        if (soz.is_favorite == 1) {
+            (requireActivity() as MainActivity).count++
+        } else {
+            (requireActivity() as MainActivity).count--
+        }
         setFavoriteIcon()
     }
 
@@ -77,4 +97,6 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
             lotie.setImageResource(R.drawable.ic_favorite_border)
         }
     }
+
+
 }

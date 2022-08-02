@@ -3,4 +3,7 @@
     <string name="page_title">Lug\'at</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="about_fragment">Bu dastur <b> Mamanov Dinmuhammad </b> tarafidan tuzildi.<b>O\'zbek filologiya</b>sida o\'qigan qoraqalpoq yigitidan,\n4 yil bergan bilimlari uchun o\'zbek filologiyasi ustozlariga,umuman butun o\'zbek xalqiga sovg\'asi bo\'lsin.Agar xato kamchiliklar bo\'lsa uzr sorayman.</string>
+    <string name="about_book">Lug’at hozirgi O’zbek adabiy tilida keng iste’molda bo’lgan 80 mingdan ortiq so’z va so’z birikmalarini, fan, texnika, san’at va madaniyat sohalariga oid terminlarni, bir necha shevada qo’llanadigan so’zlarni, ba’zi tarixiy va eskirgan atamalarni o’z ichiga oladi. Lug’atda berilgan  so’zlarning amalda qo’llanishi XX asr O’zbek adabiyoti va matbuotidan olingan misollar bilan dalillangan. Lug’at O’zbek tilshunosligi va turkiyshunoslik bo’yicha mutaxassislar, tarjimonlar, ommaviy axborot vositalari xodimlari, oliy ta’lim muassasalarining o’qituvchilari va talabalari, shuningdek, keng o’quvchilar ommasi uchun mo’ljallangan.</string>
 </resources>

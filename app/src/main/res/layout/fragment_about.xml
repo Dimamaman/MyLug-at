@@ -1,15 +1,50 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/recyclerview_bg"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginTop="10dp"
     tools:context="com.example.fragments.AboutFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="About"
-        android:textSize="30sp"
-        android:gravity="center"/>
+        android:id="@+id/aboutMe"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="18dp"
+        android:text="@string/about_fragment"
+        android:textAlignment="center"
+        android:textSize="21sp"
+        tools:ignore="MissingConstraints" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/about_book"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/courgette"
+        android:text="Kitob haqida"
+        app:cornerRadius="10dp"
+        android:layout_margin="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutMe" />
+
+    <Button
+        android:id="@+id/abrrevation_book"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/courgette"
+        android:text="Kitobdagi qisqartmalar"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/about_book"
+        app:layout_constraintStart_toStartOf="@+id/about_book"
+        app:layout_constraintTop_toBottomOf="@+id/about_book" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

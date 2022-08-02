@@ -6,25 +6,50 @@
     android:background="@drawable/background_bg"
     tools:context="com.example.fragments.HomeFragment">
 
-    <androidx.appcompat.widget.AppCompatEditText
+<!--    <androidx.appcompat.widget.AppCompatEditText-->
+<!--        android:id="@+id/llToolbar"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="70dp"-->
+<!--        android:padding="20dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:background="@drawable/background_edit_text"-->
+<!--        android:drawableStart="@drawable/ic_baseline_search_24"-->
+<!--        android:hint="Search..."-->
+<!--        android:textSize="15sp"-->
+<!--        android:textColorHint="@color/teal_700"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--    </androidx.appcompat.widget.AppCompatEditText>-->
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/llToolbar"
         android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:padding="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="@drawable/background_edit_text"
-        android:drawableStart="@drawable/ic_baseline_search_24"
-        android:hint="Search..."
-        android:textColorHint="@color/teal_700"
+        app:layout_constraintStart_toStartOf="@id/linearlayout"
+        app:layout_constraintEnd_toEndOf="@id/linearlayout"
+        app:endIconMode="clear_text"
+        app:hintTextAppearance="@style/TextLabel"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintTop_toTopOf="parent">
 
-    </androidx.appcompat.widget.AppCompatEditText>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/llToolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/recyclerview_bg"
+            android:drawableStart="@drawable/ic_baseline_search_24"
+            android:textColor="@color/headerColor"
+            android:inputType="text"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
+        android:id="@+id/linearlayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
